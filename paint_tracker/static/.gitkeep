@@ -1,0 +1,2 @@
+# This file intentionally left empty – populated by `scripts/build_and_publish.sh`
+# when the frontend is built and copied here before packaging.

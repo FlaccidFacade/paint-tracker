@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paint-tracker"
+version = "0.1.0"
+description = "Paint and stain shelf tracker – self-updating, one-command deploy for Raspberry Pi"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+keywords = ["paint", "tracker", "raspberry-pi", "home"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Home Automation",
+]
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.35",
+    "sqlalchemy>=2.0",
+    "pydantic>=2.0",
+]
+
+[project.scripts]
+paint-tracker = "paint_tracker.cli:main"
+
+[project.urls]
+"Homepage" = "https://github.com/FlaccidFacade/paint-tracker"
+"Bug Tracker" = "https://github.com/FlaccidFacade/paint-tracker/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["paint_tracker*"]
+
+[tool.setuptools.package-data]
+paint_tracker = ["static/**", "static/*"]

@@ -10,3 +10,11 @@ dist/
 
 # Environment
 .env
+
+# Built frontend assets (populated by `scripts/build_and_publish.sh`)
+paint_tracker/static/*
+!paint_tracker/static/.gitkeep
+
+# Python packaging artefacts
+*.egg-info/
+build/
