@@ -9,7 +9,7 @@ Paint and stain shelf tracker with:
 ## Backend
 
 ```bash
-cd /home/runner/work/paint-tracker/paint-tracker/backend
+cd backend
 python -m pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
@@ -23,7 +23,7 @@ export DATABASE_URL='postgresql+psycopg://user:password@localhost:5432/paint_tra
 ## Frontend
 
 ```bash
-cd /home/runner/work/paint-tracker/paint-tracker/frontend
+cd frontend
 npm install
 npm run dev
 ```
