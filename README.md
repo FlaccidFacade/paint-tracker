@@ -103,7 +103,7 @@ bash scripts/build_and_publish.sh --test   # publish to TestPyPI
 
 ---
 
-## Included behaviour
+## Included behavior
 
 - Create paints with required `room`, `shelf_level`, `shelf_depth`
 - Room suggestions while typing; new room names are saved automatically

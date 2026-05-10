@@ -15,6 +15,6 @@ dist/
 paint_tracker/static/*
 !paint_tracker/static/.gitkeep
 
-# Python packaging artefacts
+# Python packaging artifacts
 *.egg-info/
 build/
