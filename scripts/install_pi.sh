@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # install_pi.sh – One-click Paint Tracker installer for Raspberry Pi Zero 2 W
 #
-# Run as the default user (typically `pi` or your chosen username):
+# Run as the default user (typically `admin` or your chosen username):
 #
 #   bash <(curl -fsSL https://raw.githubusercontent.com/FlaccidFacade/paint-tracker/main/scripts/install_pi.sh)
 #
