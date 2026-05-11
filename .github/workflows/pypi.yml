@@ -11,6 +11,7 @@ jobs:
     environment: pypi
     permissions:
       contents: read
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -29,10 +30,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install Python build tools
-        run: pip install "build==1.2.2" "twine==6.1.0"
+        run: pip install "build==1.2.2"
 
-      - name: Build and publish to PyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        run: bash scripts/build_and_publish.sh
+      - name: Build
+        run: bash scripts/build_and_publish.sh --build-only
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 # build_and_publish.sh – Build the frontend, bundle it into the Python package,
-# then publish to PyPI.
+# then (optionally) publish to PyPI.
 #
 # Prerequisites:
 #   - Node.js / npm installed (to build the React frontend)
-#   - pip install build twine
-#   - TWINE_USERNAME / TWINE_PASSWORD (or ~/.pypirc) configured
+#   - pip install build
 #
 # Usage:
-#   bash scripts/build_and_publish.sh [--test]   # --test uploads to TestPyPI
+#   bash scripts/build_and_publish.sh              # build + publish to PyPI (requires twine + credentials)
+#   bash scripts/build_and_publish.sh --build-only # build only, skip publish (used in CI with OIDC)
+#   bash scripts/build_and_publish.sh --test       # build + upload to TestPyPI (local use; requires twine)
 
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 STATIC_DIR="$ROOT/paint_tracker/static"
 FRONTEND_DIR="$ROOT/frontend"
-TEST_PYPI="${1:-}"
+ARG="${1:-}"
 
 info()    { echo "ℹ️  $*"; }
 success() { echo "✅  $*"; }
@@ -38,7 +39,9 @@ python3 -m build --wheel --sdist
 success "Build complete. Artifacts in dist/."
 
 # ── 3. Publish ────────────────────────────────────────────────────────────────
-if [[ "$TEST_PYPI" == "--test" ]]; then
+if [[ "$ARG" == "--build-only" ]]; then
+    info "Build-only mode – skipping publish."
+elif [[ "$ARG" == "--test" ]]; then
     info "Uploading to TestPyPI …"
     python3 -m twine upload --repository testpypi dist/*
     success "Uploaded to TestPyPI."
