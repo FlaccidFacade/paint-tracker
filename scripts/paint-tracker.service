@@ -1,0 +1,18 @@
+[Unit]
+Description=Paint Tracker – paint and stain shelf tracker
+Documentation=https://github.com/FlaccidFacade/paint-tracker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Change "pi" to your username if different.
+User=pi
+ExecStart=/home/pi/.local/bin/paint-tracker --host 0.0.0.0 --port 8000 --no-update-check
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=30
+Environment="HOME=/home/pi"
+
+[Install]
+WantedBy=multi-user.target
