@@ -45,7 +45,7 @@ if [[ "$TEST_PYPI" == "--test" ]]; then
     echo "Install with: pip install --index-url https://test.pypi.org/simple/ paint-tracker"
 else
     info "Uploading to PyPI …"
-    python3 -m twine upload dist/*
+    python3 -m twine upload dist/* --verbose
     success "Uploaded to PyPI."
     echo "Install with: pip install paint-tracker"
 fi
