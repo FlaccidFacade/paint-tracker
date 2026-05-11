@@ -2,7 +2,7 @@
 # `backend/tests/` and legacy imports continue to work unchanged.
 from paint_tracker.database import (  # noqa: F401
     DATABASE_URL,
-    SessionLocal,
+    session_local,
     engine,
     get_db,
 )
